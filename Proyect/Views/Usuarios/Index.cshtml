@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Proyect.Models.Usuario>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="page-title">Usuarios</h1>
+
+<p class="text-end">
+    <a asp-action="Create" class="btn btn-custom">Crear nuevo usuario</a>
+</p>
+
+<table class="table table-striped table-hover" id="UsuariosTable">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.IdTipoDocumento)</th>
+            <th>@Html.DisplayNameFor(model => model.NroDocumento)</th>
+            <th>@Html.DisplayNameFor(model => model.Nombres)</th>
+            <th>@Html.DisplayNameFor(model => model.Apellidos)</th>
+            <th>@Html.DisplayNameFor(model => model.Celular)</th>
+            <th>@Html.DisplayNameFor(model => model.Correo)</th>
+            <th>@Html.DisplayNameFor(model => model.Estado)</th>
+            <th>@Html.DisplayNameFor(model => model.IdRolNavigation)</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.IdTipoDocumento)</td>
+                <td>@Html.DisplayFor(modelItem => item.NroDocumento)</td>
+                <td>@Html.DisplayFor(modelItem => item.Nombres)</td>
+                <td>@Html.DisplayFor(modelItem => item.Apellidos)</td>
+                <td>@Html.DisplayFor(modelItem => item.Celular)</td>
+                <td>@Html.DisplayFor(modelItem => item.Correo)</td>
+                <td>@Html.DisplayFor(modelItem => item.Estado)</td>
+                <td>@Html.DisplayFor(modelItem => item.IdRolNavigation.NomRol)</td>
+                <td class="action-icons">
+                    <a asp-action="Edit" asp-route-id="@item.IdRol" class="btn btn-icon">
+                        <i class="bi bi-pencil-square"></i> Editar
+                    </a> |
+                    <a asp-action="Details" asp-route-id="@item.IdRol" class="btn btn-icon">
+                        <i class="bi bi-info-lg"></i> Detalles
+                    </a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdRol" class="btn btn-icon">
+                        <i class="bi bi-trash"></i> Eliminar
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#UsuariosTable').DataTable({
+                language: {
+                    "sLengthMenu": "Mostrar _MENU_ entradas",
+                    "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+                    "sSearch": "Buscar:"
+                }
+            });
+        })
+    </script>
+}

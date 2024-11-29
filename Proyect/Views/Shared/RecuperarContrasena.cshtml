@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Recuperar Contraseña";
+}
+
+<h2>Recuperar Contraseña</h2>
+<p>Introduce tu correo electrónico para recibir un enlace de recuperación de contraseña.</p>
+
+<form asp-action="RecuperarContrasena" method="post">
+    <div class="form-group">
+        <label for="email">Correo electrónico</label>
+        <input type="email" name="correo" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar enlace de recuperación</button>
+</form>
+
+@if (ViewData["mensaje"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewData["mensaje"]
+    </div>
+}

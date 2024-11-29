@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Verificar Código de Recuperación";
+}
+
+<div class="container mt-5 pt-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-xl-4 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Verificar Código de Recuperación
+                </div>
+                <div class="card-body">
+                    <form asp-controller="Inicio" asp-action="VerificarCodigo" method="post">
+                        <!-- Enviar el correo como un campo oculto -->
+                        <input type="hidden" name="correo" value="@TempData["correo"]" />
+
+                        <!-- Campo para ingresar el código de recuperación -->
+                        <input class="form-control mb-3" type="text" placeholder="Código de recuperación" required name="codigo" />
+
+                        <div class="d-grid gap-2 mb-3">
+                            <button class="btn btn-primary" type="submit">
+                                Verificar Código
+                            </button>
+                        </div>
+
+                        <!-- Mostrar mensaje de error si el código es incorrecto -->
+                        @if (ViewData["mensaje"] != null)
+                        {
+                            <div class="form-group">
+                                <div class="alert alert-danger" role="alert">
+                                    @ViewData["mensaje"]
+                                </div>
+                            </div>
+                        }
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+﻿@model Proyect.Models.Permiso
+
+@{
+    ViewData["Title"] = "Detalles del Permiso";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="page-title">Detalles del Permiso</h1>
+
+<div class="details-container">
+    <div class="card">
+        <div class="card-header">
+            <h4>Información del Permiso</h4>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">Nombre del Permiso</dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.NomPermiso)
+                </dd>
+                <dt class="col-sm-3">Descripción</dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Descripcion)
+                </dd>
+                <dt class="col-sm-3">Estado</dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Estado)
+                </dd>
+            </dl>
+        </div>
+        <div class="card-footer text-end">
+            <a asp-action="Edit" asp-route-id="@Model?.IdPermiso" class="btn btn-primary btn-sm">Editar</a>
+            <a asp-action="Index" class="btn btn-secondary btn-sm">Volver a la lista</a>
+        </div>
+    </div>
+</div>
+
